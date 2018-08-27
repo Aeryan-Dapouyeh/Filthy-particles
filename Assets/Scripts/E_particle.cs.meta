@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 196b6c4f9cfa68242b21accfa8fb8eb9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - p_particleSprite: {fileID: 21300000, guid: ff7c3fb4ab74e3c43bcdaa7df2f8c5cc, type: 3}
+  - n_particleSprite: {fileID: 21300000, guid: 01aa9e79a419f6740b6b0a59402dc462, type: 3}
+  - f_particlePrefab: {fileID: 1867079038224692, guid: c4faf13a9c62eda4aa8e54f49075a7ab,
+      type: 2}
+  - binaryBond: {instanceID: 0}
+  - tripleBond: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

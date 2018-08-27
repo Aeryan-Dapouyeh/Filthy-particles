@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 91a16745c1c2bba49bd0897a190ac08f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {instanceID: 0}
+  - stoppingPointPrefab: {fileID: 1080618324284308, guid: 3f9ff54228497d14aac893bccdf6ced2,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
