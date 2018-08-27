@@ -8,13 +8,12 @@ public class A_2particleController : UltimateA_particleScript
 
     // Use this for initialization
     protected override void Start () {
-        thisA_particle = new aParticle(SearchForCollidingWormies(), 1, gameObject);
+        thisA_particle = new aParticle(1/SearchForCollidingWormies(), 1, gameObject); // the collision point calculation is quit controversial, it's
+        // not clear wether the decrease of the points would be better while several wormies collide or an increase of it
     }
 	
 	// Update is called once per frame
 	protected override void Update () {
-        int ex = SearchForCollidingWormies(); // the problem is that the game always returns an int as explosion value, when it actually should return a float in orther to devide it further, TO BE FIXED LATER
-        Debug.Log("Points Per explosion: " + thisA_particle.pointsPerExplosion + " colliding wormies: " + ex);
         vanish();
 	}
 }

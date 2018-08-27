@@ -13,7 +13,7 @@ public class A_1particleController : UltimateA_particleScript
     }
     // Use this for initialization
     protected override void Start () {
-        thisA_particle = new aParticle(SearchForCollidingWormies(), 1, gameObject);
+        thisA_particle = new aParticle(1/SearchForCollidingWormies(), 1, gameObject);
     }
 	
 	// Update is called once per frame

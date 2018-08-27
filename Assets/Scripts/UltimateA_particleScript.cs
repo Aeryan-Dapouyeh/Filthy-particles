@@ -44,7 +44,7 @@ public abstract class UltimateA_particleScript : MonoBehaviour {
 
     }
 
-    public int SearchForCollidingWormies()
+    public float SearchForCollidingWormies()
     {
         if (gameManagerScript == null)
         {
@@ -122,27 +122,7 @@ public abstract class UltimateA_particleScript : MonoBehaviour {
                 }
             }
         }
-        if(numberOfWormiesColliding == 0)
-        {
-            Debug.Log("No, colliding wormies on an a_particle, the player can not play.");
-        }
-        if (numberOfWormiesColliding == 1)
-        {
-            return 1;
-        }
-        if (numberOfWormiesColliding == 2)
-        {
-            return 2;
-        }
-        if (numberOfWormiesColliding == 3)
-        {
-            return 3;
-        }
-        if (numberOfWormiesColliding == 4)
-        {
-            return 4;
-        }
-        return (int)numberOfWormiesColliding;        
+        return numberOfWormiesColliding;        
     }
     protected void Move()
     {
@@ -178,11 +158,11 @@ public abstract class UltimateA_particleScript : MonoBehaviour {
     }
     public struct aParticle
     {
-        public int pointsPerExplosion;
+        public float pointsPerExplosion;
         public int type;
         public Vector2 position;
 
-        public aParticle(int _pointsPerExplosion, int _type, GameObject thisGameObject)
+        public aParticle(float _pointsPerExplosion, int _type, GameObject thisGameObject)
         {
             pointsPerExplosion = _pointsPerExplosion;
             type = _type;

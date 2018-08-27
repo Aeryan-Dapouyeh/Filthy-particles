@@ -356,7 +356,7 @@ public class E_particle : MovableObject {
         {            
             if (childCount == 0)
             {
-                int points = new int();
+                float points = new float();
                 if(other.GetComponent<SpriteRenderer>().sprite == A_particleSprites[0])
                 {
                     points = other.GetComponent<A_normalParticleController>().thisA_particle.pointsPerExplosion;
