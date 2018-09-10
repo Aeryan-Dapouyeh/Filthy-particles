@@ -107,13 +107,13 @@ MonoBehaviour:
   pointsForSingleCollision: 5
   pointsForDoubleCollision: 10
   pointsForTripleCollision: 15
-  p_particleSprite: {fileID: 21300000, guid: ff7c3fb4ab74e3c43bcdaa7df2f8c5cc, type: 3}
-  n_particleSprite: {fileID: 0}
+  p_particleSprite: {fileID: 21300000, guid: df2be8b7530c88b41856d8c83d816772, type: 3}
+  n_particleSprite: {fileID: 21300000, guid: 512d49895bf64e647ae602275365d8f2, type: 3}
   A_particleSprites:
-  - {fileID: 21300000, guid: 6307eb9ae79217c49a0c0cdd3d0a48ce, type: 3}
-  - {fileID: 21300000, guid: cba2517a46948f84088906b21dba1fb9, type: 3}
-  - {fileID: 21300000, guid: 531bba52984236e4fb256feacf8f7fff, type: 3}
-  - {fileID: 21300000, guid: cbea6c4475de4864b9eb48f5626f3e2b, type: 3}
+  - {fileID: 21300000, guid: 4bd6bdb18b24057408c0121228fa95d5, type: 3}
+  - {fileID: 21300000, guid: 98edddfb2824f2f429b671a1bfe22371, type: 3}
+  - {fileID: 21300000, guid: 24429d3aa0278ec4397563f4f2932872, type: 3}
+  - {fileID: 21300000, guid: cc670e5252b93d94185142c686cddff9, type: 3}
   Ati_prefab: {fileID: 1475935229842000, guid: b7fe0b0d9fb6df143b3d187cc32d1522, type: 2}
   NE_particle: {fileID: 1264017689167234, guid: 67e933bd81b248343a73e5e133d4414a,
     type: 2}

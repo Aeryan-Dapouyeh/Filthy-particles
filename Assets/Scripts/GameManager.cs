@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -17,7 +18,8 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> existingStoppingPoints;
     public GameObject[] a_particles;
     public List<Vector2> stoppingPointPositions;
-    public Vector2 aimedPosition = new Vector2(0,0);    
+    public Vector2 aimedPosition = new Vector2(0,0);
+    public Text pointsUI;
 
     private bool moveTime_toBeModified = false;
     private E_particle player_E_particle_Script;    
@@ -46,7 +48,6 @@ public class GameManager : MonoBehaviour {
     }
     private void FixedUpdate()
     {
-        Debug.Log(a_particles.Length);
         a_particles = GameObject.FindGameObjectsWithTag("a_particle");
         if (a_particles.Length == 0)
         {            

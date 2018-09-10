@@ -93,6 +93,7 @@ MonoBehaviour:
   movingDistance: 5
   canMove: 1
   wormHoleTransitation: 0
+  isAti: 0
   isAnE_particle: 0
   isAnN_particle: 0
   isAnP_particle: 1
@@ -100,26 +101,32 @@ MonoBehaviour:
   isA_tripleBond: 0
   isA_PE_Bond: 0
   isA_NE_bond: 0
+  isA_NP_bond: 0
   horizontal: 0
   vertical: 0
   movmentCount: 0
   pointsForSingleCollision: 10
   pointsForDoubleCollision: 20
   pointsForTripleCollision: 30
-  p_particleSprite: {fileID: 21300000, guid: ff7c3fb4ab74e3c43bcdaa7df2f8c5cc, type: 3}
-  n_particleSprite: {fileID: 21300000, guid: 01aa9e79a419f6740b6b0a59402dc462, type: 3}
+  p_particleSprite: {fileID: 21300000, guid: df2be8b7530c88b41856d8c83d816772, type: 3}
+  n_particleSprite: {fileID: 21300000, guid: 512d49895bf64e647ae602275365d8f2, type: 3}
   A_particleSprites:
-  - {fileID: 21300000, guid: 6307eb9ae79217c49a0c0cdd3d0a48ce, type: 3}
-  - {fileID: 21300000, guid: cba2517a46948f84088906b21dba1fb9, type: 3}
-  - {fileID: 21300000, guid: 531bba52984236e4fb256feacf8f7fff, type: 3}
-  - {fileID: 21300000, guid: cbea6c4475de4864b9eb48f5626f3e2b, type: 3}
-  NE_particle: {fileID: 0}
+  - {fileID: 21300000, guid: 4bd6bdb18b24057408c0121228fa95d5, type: 3}
+  - {fileID: 21300000, guid: 98edddfb2824f2f429b671a1bfe22371, type: 3}
+  - {fileID: 21300000, guid: 24429d3aa0278ec4397563f4f2932872, type: 3}
+  - {fileID: 21300000, guid: cc670e5252b93d94185142c686cddff9, type: 3}
+  Ati_prefab: {fileID: 0}
+  NE_particle: {fileID: 1264017689167234, guid: 67e933bd81b248343a73e5e133d4414a,
+    type: 2}
+  NP_particle: {fileID: 1452680227533916, guid: 65f74cb644dedd140807a047d1ff5dde,
+    type: 2}
   PE_particle: {fileID: 1572739327176698, guid: 1c0e9990bb12eee4893c917fe5875f15,
     type: 2}
   f_particlePrefab: {fileID: 1867079038224692, guid: c4faf13a9c62eda4aa8e54f49075a7ab,
     type: 2}
   binaryBond: {fileID: 1490167725533508, guid: 6a376082c9b742145a10c92e218b2172, type: 2}
   tripleBond: {fileID: 1097805228433524, guid: adf74d007d4c2be4683faf52658ce17c, type: 2}
+  pointsUI: {fileID: 0}
 --- !u!212 &212023457469778382
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -155,7 +162,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ff7c3fb4ab74e3c43bcdaa7df2f8c5cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df2be8b7530c88b41856d8c83d816772, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

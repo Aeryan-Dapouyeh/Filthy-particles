@@ -38,6 +38,7 @@ public class E_particle : MovableObject {
     public bool isA_tripleBond = false;
     public bool isA_PE_Bond = false;
     public bool isA_NE_bond = false;
+    public bool isA_NP_bond = false;
     public int horizontal = 0;
     public int vertical = 0;
     public int movmentCount = 0;
@@ -49,6 +50,7 @@ public class E_particle : MovableObject {
     public Sprite[] A_particleSprites;
     public GameObject Ati_prefab;
     public GameObject NE_particle;
+    public GameObject NP_particle;
     public GameObject PE_particle;
     public GameObject f_particlePrefab;
     public GameObject binaryBond;
@@ -56,10 +58,11 @@ public class E_particle : MovableObject {
     public Text pointsUI;
 
     protected override void Awake()
-    {
+    {        
         gameManager = GameObject.FindWithTag("GameController");
         gameManagerScript = gameManager.GetComponent<GameManager>();
-        if(gameObject.GetComponent<SpriteRenderer>() != null)
+        pointsUI = gameManagerScript.pointsUI;
+        if (gameObject.GetComponent<SpriteRenderer>() != null)
         {
             thisParticles_Sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
         }
@@ -340,6 +343,15 @@ public class E_particle : MovableObject {
                 Destroy(other.gameObject);
                 Destroy(gameObject);
             }
+            if(isAnP_particle)
+            {
+                GameObject NP_par = Instantiate(NP_particle, other.transform);
+                resetTypeOfPlayer(NP_par.GetComponent<E_particle>().typeOfPlayer);
+                NP_par.GetComponent<E_particle>().isA_NP_bond = true;
+                other.transform.GetChild(0).transform.parent = null;
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
         }
         if(other.tag == "wormHole")
         {
@@ -353,34 +365,26 @@ public class E_particle : MovableObject {
             }
         }
         if (other.tag == "a_particle")
-        {            
-            if (childCount == 0)
+        {
+            float points = new float();
+            if (other.GetComponent<SpriteRenderer>().sprite == A_particleSprites[0])
             {
-                float points = new float();
-                if(other.GetComponent<SpriteRenderer>().sprite == A_particleSprites[0])
-                {
-                    points = other.GetComponent<A_normalParticleController>().thisA_particle.pointsPerExplosion;
-                }
-                if(other.GetComponent<SpriteRenderer>().sprite == A_particleSprites[1])
-                {
-                    points = other.GetComponent<A_1particleController>().thisA_particle.pointsPerExplosion;
-                }
-                if (other.GetComponent<SpriteRenderer>().sprite == A_particleSprites[2])
-                {
-                    points = other.GetComponent<A_2particleController>().thisA_particle.pointsPerExplosion;
-                }
-                if (other.GetComponent<SpriteRenderer>().sprite == A_particleSprites[3])
-                {
-                    points = other.GetComponent<A_3particleController>().thisA_particle.pointsPerExplosion;
-                }                
-                gameManagerScript.Points += pointsForSingleCollision * points;
-                pointsUI.text = gameManagerScript.Points.ToString();
-            }                
-
-            if (childCount == 2)
-                gameManagerScript.Points += pointsForDoubleCollision;
-            if (childCount == 3)
-                gameManagerScript.Points += pointsForTripleCollision;
+                points = other.GetComponent<A_normalParticleController>().thisA_particle.pointsPerExplosion;
+            }
+            if (other.GetComponent<SpriteRenderer>().sprite == A_particleSprites[1])
+            {
+                points = other.GetComponent<A_1particleController>().thisA_particle.pointsPerExplosion;
+            }
+            if (other.GetComponent<SpriteRenderer>().sprite == A_particleSprites[2])
+            {
+                points = other.GetComponent<A_2particleController>().thisA_particle.pointsPerExplosion;
+            }
+            if (other.GetComponent<SpriteRenderer>().sprite == A_particleSprites[3])
+            {
+                points = other.GetComponent<A_3particleController>().thisA_particle.pointsPerExplosion;
+            }
+            gameManagerScript.Points += pointsForSingleCollision * points;
+            pointsUI.text = gameManagerScript.Points.ToString();
 
             Destroy(other.gameObject);
         }

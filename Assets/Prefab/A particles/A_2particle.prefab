@@ -68,16 +68,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9eae16af127c184ca8c07792c342352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minXpos: -20
-  maxXpos: 20
-  minYpos: -14
-  maxYpos: 14
   maxRandomPeriodValue: 10
   minRandomPeriodValue: 2
   maxVanishValue: 30
   minVanishValue: 10
   maxVanishFor: 5
   minVanishFor: 1
+  numberOfWormiesColliding: 0
+  gameManagerScript: {fileID: 0}
 --- !u!212 &212120820603139846
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -113,7 +111,7 @@ SpriteRenderer:
   m_SortingLayerID: -1886033545
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 531bba52984236e4fb256feacf8f7fff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24429d3aa0278ec4397563f4f2932872, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

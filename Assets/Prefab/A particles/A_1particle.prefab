@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4046372560201096}
   - component: {fileID: 212262527991567484}
   - component: {fileID: 58651296475941984}
+  - component: {fileID: 114000981251455166}
   m_Layer: 0
   m_Name: A_1particle
   m_TagString: a_particle
@@ -56,6 +57,25 @@ CircleCollider2D:
   m_Offset: {x: -0.106879234, y: 0}
   serializedVersion: 2
   m_Radius: 2.476861
+--- !u!114 &114000981251455166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541684754589104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8e93872d1d97446a44326e08a2c512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRandomPeriodValue: 10
+  minRandomPeriodValue: 2
+  maxVanishValue: 30
+  minVanishValue: 10
+  maxVanishFor: 5
+  minVanishFor: 1
+  numberOfWormiesColliding: 0
+  gameManagerScript: {fileID: 0}
 --- !u!212 &212262527991567484
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -91,7 +111,7 @@ SpriteRenderer:
   m_SortingLayerID: -1886033545
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cba2517a46948f84088906b21dba1fb9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98edddfb2824f2f429b671a1bfe22371, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
