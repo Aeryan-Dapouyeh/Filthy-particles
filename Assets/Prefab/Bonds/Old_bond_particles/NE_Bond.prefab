@@ -234,6 +234,7 @@ MonoBehaviour:
   isA_tripleBond: 0
   isA_PE_Bond: 0
   isA_NE_bond: 1
+  isA_NP_bond: 0
   horizontal: 0
   vertical: 0
   movmentCount: 0
@@ -249,6 +250,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cc670e5252b93d94185142c686cddff9, type: 3}
   Ati_prefab: {fileID: 1475935229842000, guid: b7fe0b0d9fb6df143b3d187cc32d1522, type: 2}
   NE_particle: {fileID: 1264017689167234}
+  NP_particle: {fileID: 0}
   PE_particle: {fileID: 1572739327176698, guid: 1c0e9990bb12eee4893c917fe5875f15,
     type: 2}
   f_particlePrefab: {fileID: 1867079038224692, guid: c4faf13a9c62eda4aa8e54f49075a7ab,

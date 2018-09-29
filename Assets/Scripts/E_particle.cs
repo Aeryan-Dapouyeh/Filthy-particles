@@ -31,7 +31,7 @@ public class E_particle : MovableObject {
     public bool canMove = true;
     public bool wormHoleTransitation = false;
     public bool isAti;
-    public bool isAnE_particle = true;
+    public bool isAnE_particle = false;
     public bool isAnN_particle = false;
     public bool isAnP_particle = false;
     public bool isA_binaryBond = false;
@@ -337,7 +337,7 @@ public class E_particle : MovableObject {
             if(isA_PE_Bond)
             {
                 GameObject ati = Instantiate(Ati_prefab, other.transform);
-                resetTypeOfPlayer(ati.GetComponent<E_particle>().typeOfPlayer);   //TO BE ACTIVATED LATER
+                resetTypeOfPlayer(ati.GetComponent<E_particle>().typeOfPlayer);
                 ati.GetComponent<E_particle>().isAti = true;
                 other.transform.GetChild(0).transform.parent = null;
                 Destroy(other.gameObject);
@@ -390,6 +390,15 @@ public class E_particle : MovableObject {
         }
         if (other.tag == "E_particle")
         {
+            if(isA_NP_bond)
+            {
+                GameObject Ati_particle = Instantiate(Ati_prefab, other.transform);
+                resetTypeOfPlayer(Ati_particle.GetComponent<E_particle>().typeOfPlayer);
+                Ati_particle.GetComponent<E_particle>().isAti = true;
+                other.transform.GetChild(0).transform.parent = null;
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
             if(childCount == 0 && isAnE_particle)
             {
                 GameObject two_Es = Instantiate(binaryBond, other.transform);
@@ -398,7 +407,7 @@ public class E_particle : MovableObject {
                 Destroy(other.gameObject);
                 Destroy(gameObject);
             }
-            if(childCount == 2 && isAnE_particle)
+            if(isA_binaryBond)
             {
                 GameObject three_Es = tripleBond;
                 Instantiate(three_Es, other.transform);
