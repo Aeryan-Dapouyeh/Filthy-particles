@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class WormieResistor : MonoBehaviour {
 
-    public float resistanceFactor = 2;
+    public float resistanceFactor = 2; // the amount of resistance a wormie will put on a moving particle
     [SerializeField]
-    public Wormie thisWormie;
+    public Wormie thisWormie; // this wormie, cunstructed as an object
 
-    private Vector2 _pos;
-    private int typeOfWormie;
+    private Vector2 _pos; // the position of this wormie
+    private int typeOfWormie; // the type of wormie, according to it's length
     private int lengthOfWormie;    
 
 	void Awake () {
-        typeOfWormie = FindWormieType();
-        lengthOfWormie = (typeOfWormie + 1) * 10;
-        _pos = transform.position;
-        thisWormie = new Wormie(typeOfWormie, lengthOfWormie, _pos, resistanceFactor, FindRotationType());
+        typeOfWormie = FindWormieType(); // find the type of the wormie
+        lengthOfWormie = (typeOfWormie + 1) * 10; // find the legnth of the wormie
+        _pos = transform.position; // assign a value to it's position
+        thisWormie = new Wormie(typeOfWormie, lengthOfWormie, _pos, resistanceFactor, FindRotationType()); // use our construct to make an object of every single wormie
 	}
-	private int FindWormieType()
+	private int FindWormieType() // a function to determine the type of wormie according to its tag
     {
         if (gameObject.tag == "Wormie(1r)")
         {
@@ -38,32 +38,30 @@ public class WormieResistor : MonoBehaviour {
             return -1;
         }
     }
-    private int FindRotationType()
+    private int FindRotationType() // a function to detmermine wether the wormie is vertical or horizontal
     {
         if(gameObject.transform.rotation.z == 0)
         {
-            return 0;
+            return 0; // zero for horizontal
         }
         else
         {
-            return 1;
+            return 1; // one for vertical
         }
     }
     void Update () {
-        thisWormie = new Wormie(typeOfWormie, lengthOfWormie, _pos, resistanceFactor, FindRotationType());
-        //Debug.Log("Position: " + thisWormie.position + " resistanceValue: " + thisWormie.resistanceValue);
-        //Debug.Log("This wormie is of type " + (thisWormie.type + 1) + " and of length " + thisWormie.length + " unity units, located at " + thisWormie.position + " it has a resistance of " + thisWormie.resistanceValue + ".");
+        thisWormie = new Wormie(typeOfWormie, lengthOfWormie, _pos, resistanceFactor, FindRotationType()); // update the state of this wormie frame, by frame
 	}
 
-    public struct Wormie
+    public struct Wormie // a struct to help us make this wormie
     {
-        public int type;
+        public int type; 
         public int length;
         public Vector2 position;
         public float resistanceValue;
         public int rotationType; // if 0 then horizontal, if 1, vertical
 
-        public Wormie(int Type, int Length, Vector2 Position, float _resistanceValue, int _rotationType)
+        public Wormie(int Type, int Length, Vector2 Position, float _resistanceValue, int _rotationType) // the syntax defined for the struct
         {
             type = Type;
             length = Length;

@@ -904,6 +904,10 @@ Prefab:
       propertyPath: m_Name
       value: A_particle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1663014758286956, guid: 62b684003f99ca245a7bd3d33dfaa962, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62b684003f99ca245a7bd3d33dfaa962, type: 2}
   m_IsPrefabParent: 0
@@ -2321,30 +2325,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4192859437047812, guid: 858fe562c211438499f15bcfcc59a873,
     type: 2}
   m_PrefabInternal: {fileID: 1855830887}
---- !u!1 &1420739094 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1541684754589104, guid: 355c8de5b0053704daa6da112a8ab0b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1556221114}
---- !u!114 &1420739098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1420739094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e8e93872d1d97446a44326e08a2c512, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxRandomPeriodValue: 10
-  minRandomPeriodValue: 2
-  maxVanishValue: 30
-  minVanishValue: 10
-  maxVanishFor: 5
-  minVanishFor: 1
-  numberOfWormiesColliding: 0
-  gameManagerScript: {fileID: 301659648}
 --- !u!1001 &1424104926
 Prefab:
   m_ObjectHideFlags: 0
@@ -2453,7 +2433,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1232561814337854, guid: be9ef9e91ef264c43ae0ec002f4d5b41, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be9ef9e91ef264c43ae0ec002f4d5b41, type: 2}
@@ -2472,7 +2452,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4055176527748606, guid: b77279d71dbdf3047a76da64fc0b973e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -58
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 4055176527748606, guid: b77279d71dbdf3047a76da64fc0b973e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2506,6 +2486,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114260882028123606, guid: b77279d71dbdf3047a76da64fc0b973e,
+        type: 2}
+      propertyPath: gameManagerScript
+      value: 
+      objectReference: {fileID: 301659648}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: b77279d71dbdf3047a76da64fc0b973e, type: 2}
@@ -2599,6 +2584,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000981251455166, guid: 355c8de5b0053704daa6da112a8ab0b8,
+        type: 2}
+      propertyPath: gameManagerScript
+      value: 
+      objectReference: {fileID: 301659648}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 355c8de5b0053704daa6da112a8ab0b8, type: 2}
   m_IsPrefabParent: 0
@@ -2699,7 +2689,7 @@ Prefab:
         type: 2}
       propertyPath: PE_particle
       value: 
-      objectReference: {fileID: 1572739327176698, guid: 1c0e9990bb12eee4893c917fe5875f15,
+      objectReference: {fileID: 1140276024983206, guid: 24b4cf2266671fd46a6d4b24a68b4cf9,
         type: 2}
     - target: {fileID: 1715135192208112, guid: 7c836819b2db0b14d9c6bfe39810df9f, type: 2}
       propertyPath: m_IsActive
@@ -3034,30 +3024,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 858fe562c211438499f15bcfcc59a873, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1875280566 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1149325261386576, guid: b77279d71dbdf3047a76da64fc0b973e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1534494521}
---- !u!114 &1875280567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1875280566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a70a1f1ba1ef884c8c88be1d0b58fcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxRandomPeriodValue: 10
-  minRandomPeriodValue: 2
-  maxVanishValue: 30
-  minVanishValue: 10
-  maxVanishFor: 5
-  minVanishFor: 1
-  numberOfWormiesColliding: 0
-  gameManagerScript: {fileID: 0}
 --- !u!1001 &1891892095
 Prefab:
   m_ObjectHideFlags: 0
@@ -3300,7 +3266,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1579691791627228, guid: 4e7018a24ccbe6d43b0cd50b5d163aea, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e7018a24ccbe6d43b0cd50b5d163aea, type: 2}

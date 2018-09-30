@@ -116,11 +116,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 24429d3aa0278ec4397563f4f2932872, type: 3}
   - {fileID: 21300000, guid: cc670e5252b93d94185142c686cddff9, type: 3}
   Ati_prefab: {fileID: 0}
-  NE_particle: {fileID: 1264017689167234, guid: 67e933bd81b248343a73e5e133d4414a,
+  NE_particle: {fileID: 1140276024983206, guid: c3d308940abdae2449739e7225e82047,
     type: 2}
-  NP_particle: {fileID: 1452680227533916, guid: 65f74cb644dedd140807a047d1ff5dde,
+  NP_particle: {fileID: 1140276024983206, guid: 02616ec3a4bad134a956cbb92d34ed82,
     type: 2}
-  PE_particle: {fileID: 1572739327176698, guid: 1c0e9990bb12eee4893c917fe5875f15,
+  PE_particle: {fileID: 1140276024983206, guid: 24b4cf2266671fd46a6d4b24a68b4cf9,
     type: 2}
   f_particlePrefab: {fileID: 1867079038224692, guid: c4faf13a9c62eda4aa8e54f49075a7ab,
     type: 2}
