@@ -8,5 +8,6 @@ public class A_normalParticleController : UltimateA_particleScript {
     protected void Start()
     {
         thisA_particle = new aParticle(1/SearchForCollidingWormies(), 0, gameObject);
+        pointsForExplosion = thisA_particle.pointsPerExplosion;
     }      
 }

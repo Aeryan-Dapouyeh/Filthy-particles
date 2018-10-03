@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class N_particleScript : E_particle {
+public class N_particleScript : UltimatePlayerScript
+{
 
 	// Use this for initialization
 	protected override void Start () {
@@ -22,10 +23,10 @@ public class N_particleScript : E_particle {
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
+        base.OnTriggerEnter2D(other);
         if(other.tag == "E_particle")
         {
             GameObject NE_par = Instantiate(NE_particle, other.transform);
-            NE_par.GetComponent<E_particle>().isA_NE_bond = true;
             other.transform.GetChild(0).transform.parent = null;
             Destroy(other.gameObject);
             Destroy(gameObject);

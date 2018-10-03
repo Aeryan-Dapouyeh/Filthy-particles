@@ -10,7 +10,7 @@ public class F_particleScript : MonoBehaviour {
     public GameObject p_particleNonePlayerPrefab;
     public float f_particleEffect = 1.2f;
 
-    private E_particle playerScript;
+    private UltimatePlayerScript playerScript;
     private GameManager gameManagerScript;
 
     private void Awake()
@@ -24,7 +24,7 @@ public class F_particleScript : MonoBehaviour {
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-        playerScript = player.GetComponent<E_particle>();
+        playerScript = player.GetComponent<UltimatePlayerScript>();
     }
     private void Update()
     {
@@ -58,18 +58,18 @@ public class F_particleScript : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            if(other.GetComponent<E_particle>().isAti)
+            if(other.GetComponent<UltimatePlayerScript>().typeOfParticle == 6)
             {
                 BreakDownAtie(n_particleNonePlayerPrefab, p_particleNonePlayerPrefab, e_particlePlayerPrefab);
                 Destroy(other.gameObject);
             }
-            if(other.GetComponent<E_particle>().isAti == false)
+            if(other.GetComponent<UltimatePlayerScript>().typeOfParticle != 6)
             {
                 gameManagerScript.initialMoveTimeValue = gameManagerScript.initialMoveTimeValue * f_particleEffect;
                 playerScript.pointsForSingleCollision = playerScript.pointsForSingleCollision / f_particleEffect;
             }            
         }
-        if(other.tag == "Player" && playerScript.isAti)
+        if(other.tag == "Player" && other.GetComponent<UltimatePlayerScript>().typeOfParticle == 6)
         {
             Destroy(other.gameObject);
         }

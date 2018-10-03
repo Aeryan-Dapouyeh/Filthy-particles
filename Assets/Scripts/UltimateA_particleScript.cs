@@ -10,7 +10,9 @@ public abstract class UltimateA_particleScript : MonoBehaviour { // this script 
     public int minVanishValue = 10; //  the minimum value for the random int vanishevery
     public int maxVanishFor = 5; // the maximum amount of time a particle can vanish
     public int minVanishFor = 1; // the minimum amount of time a particle can vanish
-
+    [Tooltip("0 for normal the numbers for the rest.")]
+    public int typeOfA_particle;
+    public float pointsForExplosion;
     public float numberOfWormiesColliding = 0; // a value that determines how many wormies are colliding with this particle at any certain frame
     public GameManager gameManagerScript; // a reference to the gameManager script
 

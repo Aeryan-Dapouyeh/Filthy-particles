@@ -15,5 +15,6 @@ public class A_1particleController : UltimateA_particleScript // this script is 
 	protected void Update () { // override the update function
         Move(); // use a method from the parent script to move the particle
         thisA_particle.pointsPerExplosion = SearchForCollidingWormies(); // calculate the amount of points according to the number of colliding wormies in each turn
+        pointsForExplosion = thisA_particle.pointsPerExplosion;
     }
 }

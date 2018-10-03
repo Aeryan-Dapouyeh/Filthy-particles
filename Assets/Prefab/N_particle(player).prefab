@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212544778120070720}
   - component: {fileID: 50414745742600838}
   - component: {fileID: 58587042646296772}
-  - component: {fileID: 114122068695950670}
+  - component: {fileID: 114595438145152208}
   m_Layer: 0
   m_Name: N_particle(player)
   m_TagString: Player
@@ -78,7 +78,7 @@ CircleCollider2D:
   m_Offset: {x: -0.5966837, y: -0.94475013}
   serializedVersion: 2
   m_Radius: 3.7828064
---- !u!114 &114122068695950670
+--- !u!114 &114595438145152208
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,58 +86,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1997111996397220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 196b6c4f9cfa68242b21accfa8fb8eb9, type: 3}
+  m_Script: {fileID: 11500000, guid: d5ca849eec77b8b47a26ee3b26e96ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasChosenToDecrease: 0
   isOnAPoint: 0
-  f_particleInstantiated: 0
-  isOn_a_stoppingPoint: 0
-  Turn: 0
-  decayingTurns: 
-  numberOf_F_particlesInstantiated: 0
-  inverseMoveTime: 0
-  instantiated_F_particles: []
-  rb2d: {fileID: 0}
-  _pos: {x: 0, y: 0}
-  preMovingPosition: {x: 0, y: 0}
-  targetPosition: {x: 0, y: 0}
-  wormHoleTarget: {x: 0, y: 0}
-  onPointPosition: {x: 0, y: 0}
-  wormholeObject: {fileID: 0}
   canMove: 1
   wormHoleTransitation: 0
-  isAti: 0
-  isAnE_particle: 0
-  isAnN_particle: 1
-  isAnP_particle: 0
-  isA_binaryBond: 0
-  isA_tripleBond: 0
-  isA_PE_Bond: 0
-  isA_NE_bond: 0
-  isA_NP_bond: 0
   horizontal: 0
+  typeOfParticle: 3
   vertical: 0
   movmentCount: 0
   movingDistance: 10
-  pointsForSingleCollision: 2.5
-  moveTime: 0.01
-  A_particleSprites:
-  - {fileID: 21300000, guid: 4bd6bdb18b24057408c0121228fa95d5, type: 3}
-  - {fileID: 21300000, guid: 98edddfb2824f2f429b671a1bfe22371, type: 3}
-  - {fileID: 21300000, guid: 24429d3aa0278ec4397563f4f2932872, type: 3}
-  - {fileID: 21300000, guid: cc670e5252b93d94185142c686cddff9, type: 3}
+  pointsForSingleCollision: 5
+  moveTime: 0.005
+  A_particleSprites: []
   Ati_prefab: {fileID: 0}
   NE_particle: {fileID: 1140276024983206, guid: c3d308940abdae2449739e7225e82047,
     type: 2}
   NP_particle: {fileID: 1140276024983206, guid: 02616ec3a4bad134a956cbb92d34ed82,
     type: 2}
-  PE_particle: {fileID: 1140276024983206, guid: 24b4cf2266671fd46a6d4b24a68b4cf9,
-    type: 2}
-  f_particlePrefab: {fileID: 1867079038224692, guid: c4faf13a9c62eda4aa8e54f49075a7ab,
-    type: 2}
-  binaryBond: {fileID: 1490167725533508, guid: 6a376082c9b742145a10c92e218b2172, type: 2}
-  tripleBond: {fileID: 1097805228433524, guid: adf74d007d4c2be4683faf52658ce17c, type: 2}
+  PE_particle: {fileID: 0}
+  f_particlePrefab: {fileID: 0}
+  binaryBond: {fileID: 0}
+  tripleBond: {fileID: 0}
   gameManagerScript: {fileID: 0}
   pointsUI: {fileID: 0}
 --- !u!212 &212544778120070720

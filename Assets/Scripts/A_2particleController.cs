@@ -15,5 +15,6 @@ public class A_2particleController : UltimateA_particleScript // this script is 
 	// Update is called once per frame
 	protected void Update () { // overriding the update function
         vanish(); // using a method from our parentscript UltimateA_particleScript, to vanish every now and then
+        pointsForExplosion = thisA_particle.pointsPerExplosion;
     }
 }

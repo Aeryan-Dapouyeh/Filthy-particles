@@ -9,12 +9,12 @@ public class TheWormHoleScript : MonoBehaviour {
     public float recoveryTime = 5.0f;
     public GameObject wormHoleBond;
 
-    private E_particle playerScript;
+    private UltimatePlayerScript playerScript;
     private float deActivationMoment;
 
     private void Awake()
     {
-        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<E_particle>();
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<UltimatePlayerScript>();
     }
 
     // Use this for initialization

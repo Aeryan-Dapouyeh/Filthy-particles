@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212996935289356738}
   - component: {fileID: 50160535315406002}
   - component: {fileID: 58665853447564728}
-  - component: {fileID: 114019698602692274}
+  - component: {fileID: 114706972167837722}
   m_Layer: 9
   m_Name: E_particle_player
   m_TagString: Player
@@ -78,7 +78,7 @@ CircleCollider2D:
   m_Offset: {x: 0.07734537, y: -0.0952425}
   serializedVersion: 2
   m_Radius: 2.6198735
---- !u!114 &114019698602692274
+--- !u!114 &114706972167837722
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,36 +86,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1140276024983206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 196b6c4f9cfa68242b21accfa8fb8eb9, type: 3}
+  m_Script: {fileID: 11500000, guid: ce0d6ef64e91a544393f6b76d984835b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 0.01
-  movingDistance: 5
+  isOnAPoint: 0
   canMove: 1
   wormHoleTransitation: 0
-  isAti: 0
-  isAnE_particle: 1
-  isAnN_particle: 0
-  isAnP_particle: 0
-  isA_binaryBond: 0
-  isA_tripleBond: 0
-  isA_PE_Bond: 0
-  isA_NE_bond: 0
-  isA_NP_bond: 0
   horizontal: 0
+  typeOfParticle: 1
   vertical: 0
   movmentCount: 0
+  movingDistance: 10
   pointsForSingleCollision: 5
-  pointsForDoubleCollision: 10
-  pointsForTripleCollision: 15
-  p_particleSprite: {fileID: 21300000, guid: df2be8b7530c88b41856d8c83d816772, type: 3}
-  n_particleSprite: {fileID: 21300000, guid: 512d49895bf64e647ae602275365d8f2, type: 3}
-  A_particleSprites:
-  - {fileID: 21300000, guid: 4bd6bdb18b24057408c0121228fa95d5, type: 3}
-  - {fileID: 21300000, guid: 98edddfb2824f2f429b671a1bfe22371, type: 3}
-  - {fileID: 21300000, guid: 24429d3aa0278ec4397563f4f2932872, type: 3}
-  - {fileID: 21300000, guid: cc670e5252b93d94185142c686cddff9, type: 3}
-  Ati_prefab: {fileID: 1475935229842000, guid: b7fe0b0d9fb6df143b3d187cc32d1522, type: 2}
+  moveTime: 0.01
+  A_particleSprites: []
+  Ati_prefab: {fileID: 0}
   NE_particle: {fileID: 1140276024983206, guid: c3d308940abdae2449739e7225e82047,
     type: 2}
   NP_particle: {fileID: 1140276024983206, guid: 02616ec3a4bad134a956cbb92d34ed82,
@@ -126,6 +111,7 @@ MonoBehaviour:
     type: 2}
   binaryBond: {fileID: 1232561814337854, guid: c1fab53e121d5c64fac9f0fa27f9cdc7, type: 2}
   tripleBond: {fileID: 1232561814337854, guid: f6ef3e6001f870b4a90c7375a27e9893, type: 2}
+  gameManagerScript: {fileID: 0}
   pointsUI: {fileID: 0}
 --- !u!212 &212996935289356738
 SpriteRenderer:

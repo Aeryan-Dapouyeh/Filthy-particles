@@ -74,6 +74,8 @@ MonoBehaviour:
   minVanishValue: 10
   maxVanishFor: 5
   minVanishFor: 1
+  typeOfA_particle: 3
+  pointsForExplosion: 0
   numberOfWormiesColliding: 0
   gameManagerScript: {fileID: 0}
 --- !u!212 &212309312779134540
