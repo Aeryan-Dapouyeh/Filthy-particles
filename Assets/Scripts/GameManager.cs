@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+    public bool turnInProgress = true;
+    public int currentTurn = 0;
+    public int mode = 0;
     public GameObject player; // a reference to the player
     public GameObject stoppingPointPrefab; // a prefab for the stoppingpoint generator to generate stopping points
     public GameObject[] stoppingPoints; // an array containing all stopping points
@@ -445,5 +448,17 @@ public class GameManager : MonoBehaviour {
     void Update()
     {
         // to be coded   
+        if(Input.GetButtonDown("Jump"))
+        {
+            Debug.Log(mode);
+            if(mode == 0)
+            {
+                mode = 1;
+            }
+            else if(mode == 1)
+            {
+                mode = 0;
+            }
+        }
     }
 }

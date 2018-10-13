@@ -63,19 +63,24 @@ public abstract class UltimatePlayerScript : MonoBehaviour {
     }
     protected virtual void FixedUpdate()
     {
-        // TO BE CODED
-        RegulateMovmentThroughWormies();
-    }
-    protected virtual void Update () {
-        if(wormHoleTransitation) // if a wormhole transition is happening...
+        if(gameManagerScript.turnInProgress && gameManagerScript.mode == 0)
+        {
+            RegulateMovmentThroughWormies();
+        }
+        if (wormHoleTransitation) // if a wormhole transition is happening...
         {
             targetPosition = wormHoleTarget; // change the targetposition to the wormhole position
         }
-
-        inverseMoveTime = 1.0f / moveTime; // set the value for inversemovetime
-        horizontal = (int)Input.GetAxisRaw("Horizontal"); // assign the input value to horizontal
-        vertical = (int)Input.GetAxisRaw("Vertical");     // assign the input value to vertical   
-        Move(horizontal, vertical, targetPosition); // let the player move, if moving is allowed
+        if (gameManagerScript.turnInProgress && gameManagerScript.mode == 0)
+        {
+            inverseMoveTime = 1.0f / moveTime; // set the value for inversemovetime
+            horizontal = (int)Input.GetAxisRaw("Horizontal"); // assign the input value to horizontal
+            vertical = (int)Input.GetAxisRaw("Vertical");     // assign the input value to vertical   
+            Move(horizontal, vertical, targetPosition); // let the player move, if moving is allowed
+        }        
+    }
+    protected virtual void Update () {
+        
     }
     protected void ModifyN_particleResistance() // this functions makes every wormie an n_particle goes through, more resistant
     {
@@ -219,6 +224,7 @@ public abstract class UltimatePlayerScript : MonoBehaviour {
                 // smoothly move towards our target
                 StartCoroutine(Smoothing(target)); // this function runs twice when exiting a wormHole
                 movmentCount += 1; // track the number of turns we have moved
+                gameManagerScript.currentTurn += 1;
                 canMove = false; // make sure that we are not allowed to move(until we have reached the destination)
                 isOnAPoint = false;// ensure that we accidentaly don't choose a moving point that is located on a stopping point
             }
