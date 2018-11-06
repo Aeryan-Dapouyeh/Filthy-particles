@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4827581395720662}
   - component: {fileID: 114705564859737188}
+  - component: {fileID: 114364732948703858}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -40,6 +41,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114364732948703858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975139623530592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccfc2f1afe5e424b9efd72e63bc7e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 114705564859737188}
 --- !u!114 &114705564859737188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,4 +64,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91a16745c1c2bba49bd0897a190ac08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnInProgress: 1
+  currentTurn: 0
+  autoTurn: 0
+  mode: 0
+  turnDuration: 2
+  atomiccurreny: 0
+  currencyCoefficient: 0
+  player: {fileID: 0}
+  stoppingPointPrefab: {fileID: 1080618324284308, guid: 3f9ff54228497d14aac893bccdf6ced2,
+    type: 2}
+  stoppingPoints: []
+  wormies1R: []
+  wormies2R: []
+  wormies3R: []
   Points: 0
+  initialMoveTimeValue: 0.1
+  existingStoppingPoints: []
+  a_particles: []
+  stoppingPointPositions: []
+  aimedPosition: {x: 0, y: 0}
+  pointsUI: {fileID: 0}

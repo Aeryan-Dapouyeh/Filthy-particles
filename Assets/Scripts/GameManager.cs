@@ -5,25 +5,31 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-    public bool turnInProgress = true;
-    public int currentTurn = 0;
-    public int mode = 0;
+    public bool turnInProgress = true; // a valuable describing the state of turn, if true player is playing, if false, the game is automatically running
+    public int currentTurn = 0; // the number used to determine the number of movments by player in filthy mode
+    public int autoTurn = 0; // the number used to determine the number of movments by player in auto mode
+    public int mode = 0; // 1 for automized 0 for filthy
+    public int turnDuration = 2;
+    public int atomiccurreny = 0;
+    public int currencyCoefficient = 10; // a coefficient used to determine the numeral value of every currency gained
     public GameObject player; // a reference to the player
     public GameObject stoppingPointPrefab; // a prefab for the stoppingpoint generator to generate stopping points
     public GameObject[] stoppingPoints; // an array containing all stopping points
     public GameObject[] wormies1R; // an array containing all wormies with a length of 1 * standard length
     public GameObject[] wormies2R; // an array containing all wormies with a length of 2 * standard length
-    public GameObject[] wormies3R; // an array containing all wormies with a length of 3 * standard length
+    public GameObject[] wormies3R; // an array containing all wormies with a length of 3 * standard length    
     public float Points; // a variable containing the points earned by the player
     public float initialMoveTimeValue; // the value entered as move time in the editor
     public List<GameObject[]> wormies; // a list of arrays that contain all arrays containing a varitey of different types of wormholes
     public List<GameObject> existingStoppingPoints; // a list of existing stopping points
     public GameObject[] a_particles; // a list of all a_particles in the scene
     public List<Vector2> stoppingPointPositions; // a list of all stopping point positions
+    public List<GameObject> allGOs;
     public Vector2 aimedPosition = new Vector2(0,0); // a position we are aiming to move towards, this variable is modified int he player(e_particle) script.
     public Text pointsUI; // a reference to our points UI
 
     //private bool moveTime_toBeModified = false; // 
+    private float NextTimeToMove;
     private p_particleScript player_P_particle_Script; // a reference to the player script of type p
     private E_particleScript player_E_particle_Script; // a reference to the player script of type e
     private N_particleScript player_N_particle_Script; // a reference to the player script of type n
@@ -51,6 +57,7 @@ public class GameManager : MonoBehaviour {
         stoppingPoints = GameObject.FindGameObjectsWithTag("StopPoint"); // find all the stopping points
         DeleteTheOverLappingStoppingPoints(); // delete the extra stopping points
         ListTheExistingStoppingPoints(); // list all the stopping points that exist 
+        turnInProgress = true;
     }
     private void FixedUpdate()
     {
@@ -184,273 +191,13 @@ public class GameManager : MonoBehaviour {
             }
         }
     }    
-    /* private void RegulateMovmentThroughWormies ()
-    {
-        foreach (GameObject stoppingPoint in stoppingPoints) // for every stoppingpoint in the scene
-        {
-            Player_script.canMove = false; // first disable the player to move
-            if(stoppingPoint != null) // if the stopping point actually exists
-            {
-                if (stoppingPoint.transform.position == playerPosition) // if the player is located on a stopping point
-                {
-                    if ((int)Input.GetAxisRaw("Horizontal") == 1) // if the player wishes to move eight
-                    {
-                        for (int i = 0; i < 31; i++) // Note: the reason i is equall to 31 is that, i checks all the 31 positions to the right of the player, if more positions are to be added, change the number
-                        {
-                            bool closestStopPointFound = false; // a boolean that determines wether a stopping point has been found or not
-                            foreach (GameObject StoppingPoint in stoppingPoints) // for every stopping point in the scene
-                            {
-                                float NewPosition = playerPosition.x + i; // the new position is i units away
-                                if(StoppingPoint != null)
-                                {
-                                    // if the stopping point has the same value as the new position and the player is not located on this stopping point and the stoppingpoint has the same y value as the player(aka. the suting stopping point has been found)
-                                    if (StoppingPoint.transform.position.x == NewPosition && playerPosition.x != StoppingPoint.transform.position.x && StoppingPoint.transform.position.y == playerPosition.y)
-                                    {
-                                        Player_script.movingDistance = (int)NewPosition - (int)playerPosition.x; // set the moving distance
-                                        float distance = NewPosition - playerPosition.x; // calculate the distance
-                                        float x = distance / 10; // calculate the x movetime variable
-                                        if(aimedPosition != new Vector2(NewPosition, playerPosition.y)) // if the position we are aiming for is not equal to the new position(aka. if it's not update it, update it!)
-                                        {
-                                            aimedPosition = new Vector2(NewPosition, playerPosition.y); // set it to that
-                                        }
-                                        if (distance <= 10) // if we are moving through a distance, that is less or equal than 10
-                                        {
-                                            float resistanceFactor = 0; // define a variable for the resistance factor
-                                            foreach (GameObject wormie in wormies1R) // foreach wormie of type 1
-                                            {
-                                                // if the wormie is this wormie...
-                                                if (wormie.GetComponent<WormieResistor>().thisWormie.position == new Vector2((playerPosition.x + (wormie.GetComponent<WormieResistor>().thisWormie.length / 2)), playerPosition.y))
-                                                {
-                                                    resistanceFactor = wormie.GetComponent<WormieResistor>().resistanceFactor; // store its resistance factor                                                     
-                                                }
-                                            }
-                                            Player_script.moveTime = initialMoveTimeValue * x * resistanceFactor; // modify the movetime value
-                                        }
-                                        // if we are dealing with a distance that is more than 10
-                                        if (distance > 10)
-                                        {
-                                            float resistanceFactor = 0; // define a variable for the resistance factor                                       
-                                            // for every single wormie that is not of type 1
-                                            for (int f = 1; f <= wormies.Count - 1; f++)
-                                            {
-                                                foreach(GameObject wormie in wormies[f])
-                                                {
-                                                    // if the wormie is this wormie
-                                                    if(wormie.GetComponent<WormieResistor>().thisWormie.length == distance && (Vector2)wormie.transform.position == new Vector2(playerPosition.x + ((f + 1) * 5), playerPosition.y))
-                                                    {
-                                                        resistanceFactor = wormie.GetComponent<WormieResistor>().resistanceFactor; // store its resistance factor somewhere                                                   
-                                                    }
-                                                }
-                                            }
-                                            // modify the movetime according to all those factors
-                                            Player_script.moveTime = Mathf.Pow(2, (x - 1)) * initialMoveTimeValue * resistanceFactor;
-                                        }            
-                                        // enable the player to move
-                                        Player_script.canMove = true;
-                                        // declare the closest point found
-                                        closestStopPointFound = true;                                        
-                                        break;
-                                    }
-                                }                                
-                            }
-                            if (closestStopPointFound) // if the closest stoppingpoint is found...
-                            {
-                                break; // no reason for wasting our precious computer power, break out of the loop
-                            }
-                        }
-                    }
-                    if ((int)Input.GetAxisRaw("Horizontal") == -1)
-                    {
-                        for (int i = 0; i > -31; i--)
-                        {
-                            bool closestStopPointFound = false;
-                            foreach (GameObject StoppingPoint in stoppingPoints)
-                            {
-                                float NewPosition = playerPosition.x + i;
-                                if (StoppingPoint != null)
-                                {
-                                    if (StoppingPoint.transform.position.x == NewPosition && playerPosition.x != StoppingPoint.transform.position.x && StoppingPoint.transform.position.y == playerPosition.y)
-                                    {
-                                        //Debug.Log("A candidate Found at " + NewPosition + ".");
-
-                                        Player_script.movingDistance = (int)playerPosition.x - (int)NewPosition;
-                                        float distance = playerPosition.x - NewPosition;
-                                        float x = distance / 10;
-                                        if (aimedPosition != new Vector2(NewPosition, playerPosition.y))
-                                        {
-                                            aimedPosition = new Vector2(NewPosition, playerPosition.y);
-                                        }
-                                        if (distance <= 10)
-                                        {
-                                            float resistanceFactor = 0;
-                                            foreach (GameObject wormie in wormies1R)
-                                            {
-                                                if (wormie.GetComponent<WormieResistor>().thisWormie.position == new Vector2((playerPosition.x +  (-(wormie.GetComponent<WormieResistor>().thisWormie.length / 2))), playerPosition.y))
-                                                {
-                                                    resistanceFactor = wormie.GetComponent<WormieResistor>().resistanceFactor;
-                                                }
-                                            }
-                                            Player_script.moveTime = initialMoveTimeValue * x * resistanceFactor;
-                                        }
-                                        if(distance > 10)
-                                        {
-                                            float resistanceFactor = 0;
-                                            for (int f = 1; f <= wormies.Count - 1; f++)
-                                            {
-                                                foreach (GameObject wormie in wormies[f])
-                                                {
-                                                    if (wormie.GetComponent<WormieResistor>().thisWormie.length == distance && (Vector2)wormie.transform.position == new Vector2(playerPosition.x - ((f + 1) * 5), playerPosition.y))
-                                                    {
-                                                        resistanceFactor = wormie.GetComponent<WormieResistor>().resistanceFactor;
-                                                    }
-                                                }
-                                            }
-                                            Player_script.moveTime = Mathf.Pow(2, (x - 1)) * initialMoveTimeValue * resistanceFactor;
-                                        }
-                                        Player_script.canMove = true;
-                                        closestStopPointFound = true;                                        
-                                        break;
-                                    }
-                                }                                
-                            }
-                            if (closestStopPointFound)
-                            {
-                                break;
-                            }
-                        }
-                    }
-                    if ((int)Input.GetAxisRaw("Vertical") == 1)
-                    {
-                        for (int i = 0; i < 31; i++)
-                        {
-                            bool closestStopPointFound = false;
-                            foreach (GameObject StoppingPoint in stoppingPoints)
-                            {
-                                float NewPosition = playerPosition.y + i;
-                                //Debug.Log("New position: (" + playerPosition.x + ", " + NewPosition);
-                                //Debug.Log("Local position is equal to: " + StoppingPoint.transform.localPosition + " whereas position relative to world is equal to " + StoppingPoint.transform.position);
-                                //Debug.Log("StoppingPoint: " + StoppingPoint.transform.position + " New position: (" + player.transform.position.x + ", " + NewPosition + " Player Position: " + player.transform.position);
-                                if(StoppingPoint != null)
-                                {
-                                    if (StoppingPoint.transform.position.y == NewPosition && StoppingPoint.transform.position.y != playerPosition.y && StoppingPoint.transform.position.x == playerPosition.x)
-                                    {
-                                        //Debug.Log("A candidate Found at " + NewPosition + ".");
-                                        Player_script.movingDistance = (int)NewPosition - (int)playerPosition.y;
-                                        float distance = NewPosition - playerPosition.y;
-                                        float x = distance / 10;
-                                        if (aimedPosition != new Vector2(playerPosition.x, NewPosition))
-                                        {
-                                            aimedPosition = new Vector2(playerPosition.x, NewPosition);
-                                        }
-                                        if (distance <= 10)
-                                        {
-                                            float resistanceFactor = 0;
-                                            foreach (GameObject wormie in wormies1R)
-                                            {
-                                                if (wormie.GetComponent<WormieResistor>().thisWormie.position == new Vector2(playerPosition.x, playerPosition.y + (wormie.GetComponent<WormieResistor>().thisWormie.length / 2)))
-                                                {
-                                                    resistanceFactor = wormie.GetComponent<WormieResistor>().resistanceFactor;
-                                                }
-                                            }
-                                            Player_script.moveTime = initialMoveTimeValue * x * resistanceFactor;
-                                        }
-                                        if (distance > 10)
-                                        {
-                                            float resistanceFactor = 0;
-                                            for (int f = 1; f <= wormies.Count - 1; f++)
-                                            {
-                                                foreach (GameObject wormie in wormies[f])
-                                                {
-                                                    if (wormie.GetComponent<WormieResistor>().thisWormie.length == distance && (Vector2)wormie.transform.position == new Vector2(playerPosition.x, playerPosition.y + ((f + 1) * 5)))
-                                                    {
-                                                        resistanceFactor = wormie.GetComponent<WormieResistor>().resistanceFactor;
-                                                    }
-                                                }
-                                            }
-                                            Player_script.moveTime = Mathf.Pow(2, (x - 1)) * initialMoveTimeValue * resistanceFactor;
-                                        }
-                                        Player_script.canMove = true;
-                                        closestStopPointFound = true;                                        
-                                        break;
-                                    }
-                                }                                
-                            }
-                            if (closestStopPointFound)
-                            {
-                                break;
-                            }
-                        }
-                    }
-                    if ((int)Input.GetAxisRaw("Vertical") == -1)
-                    {
-                        for (int i = 0; i > -31; i--)
-                        {
-                            bool closestStopPointFound = false;
-                            foreach (GameObject StoppingPoint in stoppingPoints)
-                            {
-                                float NewPosition = playerPosition.y + i;
-                                if (StoppingPoint != null)
-                                {
-                                    if (StoppingPoint.transform.position.y == NewPosition && playerPosition.y != StoppingPoint.transform.position.y && StoppingPoint.transform.position.x == playerPosition.x)
-                                    {
-                                        //Debug.Log("A candidate Found at " + NewPosition + ".");
-
-                                        Player_script.movingDistance = (int)playerPosition.y - (int)NewPosition;
-                                        float distance = playerPosition.y - NewPosition;
-                                        float x = distance / 10;
-                                        if (aimedPosition != new Vector2(playerPosition.x, NewPosition))
-                                        {
-                                            aimedPosition = new Vector2(playerPosition.x, NewPosition);
-                                        }
-                                        if (distance <= 10)
-                                        {
-                                            float resistanceFactor = 0;
-                                            foreach (GameObject wormie in wormies1R)
-                                            {
-                                                if (wormie.GetComponent<WormieResistor>().thisWormie.position == new Vector2(playerPosition.x, playerPosition.y + (-(wormie.GetComponent<WormieResistor>().thisWormie.length / 2))))
-                                                {
-                                                    resistanceFactor = wormie.GetComponent<WormieResistor>().resistanceFactor;
-                                                }
-                                            }
-                                            Player_script.moveTime = initialMoveTimeValue * x * resistanceFactor;
-                                        }
-                                        if (distance > 10)
-                                        {
-                                            float resistanceFactor = 0;
-                                            for (int f = 1; f <= wormies.Count - 1; f++)
-                                            {
-                                                foreach (GameObject wormie in wormies[f])
-                                                {
-                                                    if (wormie.GetComponent<WormieResistor>().thisWormie.length == distance && (Vector2)wormie.transform.position == new Vector2(playerPosition.x, playerPosition.y - ((f + 1) * 5)))
-                                                    {
-                                                        resistanceFactor = wormie.GetComponent<WormieResistor>().resistanceFactor;
-                                                    }
-                                                }
-                                            }
-                                            Player_script.moveTime = Mathf.Pow(2, (x - 1)) * initialMoveTimeValue * resistanceFactor;
-                                        }
-                                        Player_script.canMove = true;
-                                        closestStopPointFound = true;
-                                        break;
-                                    }
-                                }                                
-                            }
-                            if (closestStopPointFound)
-                            {
-                                break;
-                            }
-                        }
-                    }
-                }
-            }            
-        }
-    }*/
     void Update()
     {
+        Debug.Log("Mode: " + mode);
+        Debug.Log("Turn in progress: " + turnInProgress);
         // to be coded   
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Change"))
         {
-            Debug.Log(mode);
             if(mode == 0)
             {
                 mode = 1;
@@ -460,5 +207,147 @@ public class GameManager : MonoBehaviour {
                 mode = 0;
             }
         }
+        if (mode == 1)
+        {
+            if (Input.GetButtonDown("Submit") && turnInProgress)
+            {
+                NextAutoTurn();
+            }
+        }
+        if(Time.time >= NextTimeToMove && turnInProgress == false)
+        {
+            turnInProgress = true;
+        }
+        InCaseMouseClicked();        
+    }
+    public void NextAutoTurn()
+    {
+        turnInProgress = false;
+        autoTurn += 1;
+        NextTimeToMove = turnDuration + Time.time;
+    }
+    public Vector2[] FindWormiesAround(GameObject thisObject)
+    {
+        GameObject upperWormie = null;
+        GameObject bottomWormie = null;
+        GameObject rightWormie = null;
+        GameObject leftWormie = null;
+        Vector2[] neighbouringWormies = new Vector2[4];
+        for (int i = 0; i <= wormies.Count - 1; i++)
+        {
+            foreach (GameObject wormie in wormies[i])
+            {
+                Vector2 _WormiePos = wormie.transform.position;
+                Vector2 _pos = thisObject.transform.position;
+                int rotationType = wormie.GetComponent<WormieResistor>().thisWormie.rotationType;
+                if (upperWormie == null && _pos.y + (i + 1) * 5 == _WormiePos.y && _pos.x == _WormiePos.x && rotationType == 1)
+                {
+                    upperWormie = wormie;
+                }
+                if (bottomWormie == null && _pos.y - (i + 1) * 5 == _WormiePos.y && _pos.x == _WormiePos.x && rotationType == 1)
+                {
+                    bottomWormie = wormie;
+                }
+                if (rightWormie == null && _pos.x + (i + 1) * 5 == _WormiePos.x && _pos.y == _WormiePos.y && rotationType == 0)
+                {
+                    rightWormie = wormie;
+                }
+                if (leftWormie == null && _pos.x - (i + 1) * 5 == _WormiePos.x && _pos.y == _WormiePos.y && rotationType == 0)
+                {
+                    leftWormie = wormie;
+                }
+            }
+        }
+        if (upperWormie != null)
+        {
+            neighbouringWormies[0] = upperWormie.transform.position;
+        }
+        if (bottomWormie != null)
+        {
+            neighbouringWormies[1] = bottomWormie.transform.position;
+        }
+        if (rightWormie != null)
+        {
+            neighbouringWormies[2] = rightWormie.transform.position;
+        }
+        if (leftWormie != null)
+        {
+            neighbouringWormies[3] = leftWormie.transform.position;
+        }
+        return neighbouringWormies;
+    }
+    void InCaseMouseClicked()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition); // this code can also be used for hovering
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            if (hit)
+            {
+                if (hit.transform.tag == "Batterium") // if dealing with a batterium
+                {
+                    GameObject[] batteriums = GameObject.FindGameObjectsWithTag("Batterium");
+                    foreach (GameObject batterium in batteriums)
+                    {
+                        if (batterium.transform.position == hit.transform.position)
+                        {
+                            Batterium batteriumScript = batterium.GetComponent<Batterium>();
+                            atomiccurreny += batteriumScript.exploitationValue + (batteriumScript.storedCash * currencyCoefficient);
+                            Instantiate(batteriumScript.explosionEffect, batterium.transform.position, Quaternion.identity);
+                            if(mode == 1)
+                            {
+                                NextAutoTurn();
+                            }
+                            Destroy(batterium);
+                        }
+                    }
+                }
+                if (hit.transform.tag == "OrbirRing_batterium") // if dealing with the batterium orbit
+                {
+                    GameObject[] batteriums = GameObject.FindGameObjectsWithTag("Batterium");
+                    foreach (GameObject batterium in batteriums)
+                    {
+                        for (int i = 0; i <= batterium.transform.childCount - 1; i++)
+                        {
+                            Transform child_trans = batterium.transform.GetChild(i).transform;
+                            if (child_trans.position == hit.transform.position && child_trans.tag == "OrbirRing_batterium")
+                            {
+                                if (batterium.GetComponent<Batterium>().storedCash != 0)
+                                {
+                                    Debug.Log(batterium.GetComponent<Batterium>().storedCash + " credits available!");
+                                    atomiccurreny += (batterium.GetComponent<Batterium>().storedCash * currencyCoefficient);
+                                    batterium.GetComponent<Batterium>().storedCash = 0;
+                                    for (int j = 0; j <= child_trans.childCount - 1; j++)
+                                    {
+                                        child_trans.GetChild(j).gameObject.SetActive(false);
+                                    }
+                                    if (mode == 1)
+                                    {
+                                        NextAutoTurn();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    void GetAllChildren(Transform current, List<GameObject> arrayToFill)
+    {
+        arrayToFill.Add(current.gameObject);
+
+        for (int i = 0; i < current.childCount; i++)
+            GetAllChildren(current.GetChild(i), arrayToFill);
+    }
+    public List<GameObject> GetAllObjectsInScene()
+    {
+        List<GameObject> allGOs = new List<GameObject>();
+        GameObject[] rootGOs = gameObject.scene.GetRootGameObjects();
+
+        for (int i = 0; i < rootGOs.Length; i++)
+            GetAllChildren(rootGOs[i].transform, allGOs);
+
+        return allGOs;
     }
 }

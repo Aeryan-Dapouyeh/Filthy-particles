@@ -15,6 +15,12 @@ TagManager:
   - Wormie(3r)
   - StopPoint
   - Ati
+  - Batterium
+  - Currency
+  - OrbirRing_batterium
+  - Scessorium
+  - Satanium
+  - Insanium
   layers:
   - Default
   - TransparentFX

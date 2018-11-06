@@ -24,11 +24,11 @@ public class ButtonScript : MonoBehaviour {
 
     public void ChangeTheMode(int typeOfbutton)
     {
-        if(typeOfbutton == 0)
+        if(typeOfbutton == 0 && gameManager.mode != 0)
         {
             gameManager.mode = 0;
         }
-        else if(typeOfbutton == 1)
+        else if(typeOfbutton == 1 && gameManager.mode != 1)
         {
             gameManager.mode = 1;
         }

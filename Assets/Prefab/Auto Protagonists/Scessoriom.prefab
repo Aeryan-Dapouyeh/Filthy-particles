@@ -9,56 +9,92 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1080618324284308}
+  m_RootGameObject: {fileID: 1228673484580048}
   m_IsPrefabParent: 1
---- !u!1 &1080618324284308
+--- !u!1 &1228673484580048
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4906619603114844}
-  - component: {fileID: 212312937358244030}
-  - component: {fileID: 114331096535846442}
+  - component: {fileID: 4790910612372282}
+  - component: {fileID: 114370070757312028}
   m_Layer: 0
-  m_Name: StoppingPoint
-  m_TagString: StopPoint
+  m_Name: Scessoriom
+  m_TagString: Scessorium
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4906619603114844
+--- !u!1 &1756544036546052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4400560348112092}
+  - component: {fileID: 212541696019190706}
+  m_Layer: 0
+  m_Name: Scessoriom sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4400560348112092
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1080618324284308}
+  m_GameObject: {fileID: 1756544036546052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0.67, z: 0}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 1}
   m_Children: []
+  m_Father: {fileID: 4790910612372282}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4790910612372282
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1228673484580048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4400560348112092}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114331096535846442
+--- !u!114 &114370070757312028
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1080618324284308}
+  m_GameObject: {fileID: 1228673484580048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09714c67bb6faba469fce09f9bd839bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 7480a2d4ecb3dab49bc37e94c03bd7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameManagerScript: {fileID: 0}
---- !u!212 &212312937358244030
+  CutAWormieEvery: 5
+  cuttingChancePerTurn: 75
+  atomicCurrencyPerCut: 5
+  currencyPrefab: {fileID: 1590985529686860, guid: e0a94722564284f48911123e57c007a7,
+    type: 2}
+  ExplosionEffect: {fileID: 198014388486049184, guid: cf0267ffd96071e4f989bb1cd4756e9b,
+    type: 2}
+--- !u!212 &212541696019190706
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1080618324284308}
+  m_GameObject: {fileID: 1756544036546052}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -88,12 +124,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec11ba6c79c1e5d468278e2d7d78f196, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 242a21374b342aa42ab6ef1876f238a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.02, y: 4.02}
+  m_Size: {x: 20, y: 20}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

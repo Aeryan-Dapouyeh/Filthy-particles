@@ -7,10 +7,11 @@ public class WormieResistor : MonoBehaviour {
     public float resistanceFactor = 2; // the amount of resistance a wormie will put on a moving particle
     [SerializeField]
     public Wormie thisWormie; // this wormie, cunstructed as an object
+    public int lengthOfWormie;
 
     private Vector2 _pos; // the position of this wormie
     private int typeOfWormie; // the type of wormie, according to it's length
-    private int lengthOfWormie;    
+       
 
 	void Awake () {
         typeOfWormie = FindWormieType(); // find the type of the wormie
