@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scessorium : MonoBehaviour {
+public class Magnium : MonoBehaviour {
     public GameManager gameManagerScript;
     public int CutAWormieEvery = 5;
     [Range(0, 100)]

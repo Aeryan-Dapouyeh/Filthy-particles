@@ -187,9 +187,6 @@ public abstract class UltimateA_particleScript : MonoBehaviour { // this script 
                 }
             }            
         }
-
-
-
         while (positionChosen == false)
         {
             foreach (Vector2 position in forbiddenPositions)
